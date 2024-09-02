@@ -2,6 +2,7 @@
   import {ref} from "vue";
   import * as faceapi from "face-api.js";
   import HeaderApp from "../components/HeaderApp.vue";
+  import Layout from "../components/Layout.vue";
 
   // Set Up Model
   const MODEL_URL = "/models";
@@ -11,15 +12,6 @@
   faceapi.loadFaceRecognitionModel(MODEL_URL).finally(() => console.log("FaceRecognition Model Loaded"));
   faceapi.loadFaceExpressionModel(MODEL_URL).finally(() => console.log("FaceExpression Model Loaded"));
   faceapi.loadMtcnnModel(MODEL_URL).finally(() => console.log("Mtcnn Model Loaded"));
-
-  // Navigation
-  // const bars = ["detection", "recognition"];
-  // const curBar = ref("detection");
-
-  // const capitalize = (str: string) => {
-  //   if (typeof str !== "string" || str.length === 0) return "";
-  //   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  // };
 
   // DataFaces
   const faceName = ref("");
@@ -324,25 +316,8 @@
 </script>
 
 <template>
-  <div class="bg-gray-100 min-h-screen">
-    <!-- NavBar -->
-    <nav class="bg-white shadow-md">
-      <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-        <h1 class="text-xl font-bold">Face Recognition</h1>
-        <!-- <div class="flex gap-x-2">
-          <button
-            v-for="bar in bars"
-            :class="['text-white font-bold py-2 px-4 rounded', curBar === bar ? 'bg-blue-500' : 'bg-gray-500']"
-            :disabled="curBar === bar"
-            @click="curBar = bar">
-            {{ capitalize(bar) }}
-          </button>
-        </div> -->
-      </div>
-    </nav>
-
+  <Layout>
     <!-- Face Detection -->
-    <!-- <div v-if="curBar === 'detection'" class="max-w-md mx-auto text-center p-4"> -->
     <div class="max-w-md mx-auto text-center p-4">
       <HeaderApp msg="Face Detection" />
       <div class="space-y-2">
@@ -401,7 +376,6 @@
     </div>
 
     <!-- Face Recognition -->
-    <!-- <div v-if="curBar === 'recognition'" class="max-w-md mx-auto text-center p-4"> -->
     <div class="max-w-md mx-auto text-center p-4">
       <HeaderApp msg="Face Recognition" />
       <div class="space-y-2 mt-2">
@@ -422,7 +396,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </Layout>
 </template>
-
-<style scoped></style>
