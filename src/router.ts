@@ -1,11 +1,15 @@
 import {createWebHistory, createRouter} from "vue-router";
 
 import Home from "./pages/Home.vue";
-import OpenCV from "./pages/OpenCV.vue";
+import AntiSpoofing from "./pages/AntiSpoofing.vue";
+// import Liveness from "./pages/Liveness.vue";
+// import Forensic from "./pages/Forensic.vue";
 
-const routes = [
-  {path: "/", component: Home},
-  {path: "/open-cv", component: OpenCV},
+export const routes = [
+  {name: "Home", path: "/", component: Home},
+  {name: "Anti Spoofing", path: "/anti-spoofing", component: AntiSpoofing},
+  // {name: "Liveness", path: "/liveness", component: Liveness},
+  // {name: "Forensic", path: "/forensic", component: Forensic},
 ];
 
 const router = createRouter({
